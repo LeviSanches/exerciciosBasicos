@@ -1,2 +1,2 @@
-# exerciciosBasicosFacul
-Local onde eu coloco alguns exercícios básicos da faculdade.
+# Exercícios Básicos
+Local onde eu coloco alguns exercícios básicos de treinamento.
