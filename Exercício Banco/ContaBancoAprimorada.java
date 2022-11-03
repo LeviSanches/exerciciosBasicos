@@ -16,6 +16,10 @@ public class ContaBanco {
 		this.statusConta = false;		
 	}
 	
+	public ContaBanco() {
+		
+	}
+	
 	public int getNumConta() {
 		return numConta;
 	}
@@ -58,58 +62,58 @@ public class ContaBanco {
 
 	public void abrirConta(String t) 
 	{
-		setTipo(t);
-		setStatus(true);
-		if (t == "cc") {
-			setSaldo(50);
-			System.out.println("Conta corrente aberta com sucesso!");
+		this.setTipo(t);
+		this.setStatus(true);
+		if (t == "CC") {
+			this.setSaldo(50);			
 		}
-		else if (t == "cp") {
-			setSaldo(150);
-			System.out.println("Conta poupança aberta com sucesso!");
-		}
-		else {
-			System.out.println("Selecione um tipo de conta válido: cc ou cp");
+		else if (t == "CP") {
+			this.setSaldo(150);			
 		}		
 	}
 	
 	public void fecharConta() 
 	{
-		if (saldoConta < 0 || saldoConta > 0) {
+		if (this.saldoConta < 0 || this.saldoConta > 0) {
 			System.out.println("Não é possível fechar a conta, verifique o seu saldo e tente novamente.");
 		}
 		else {
-			setStatus(false);
-			System.out.println("Conta fechada com sucesso!");
+			this.setStatus(false);			
 		}		
 	}
 	
 	public float depositar(float d) 
 	{
-		if (statusConta == false) {
+		if (this.statusConta == false) {
 			System.out.println("Verifique o status da conta antes de depositar.");
 		}
-		System.out.println("Deposito realizado com sucesso!");
-		saldoConta += d;
+		this.setSaldo(this.getSaldo() + d);
 		return d;		
 	}
 	
 	public float sacar(float s) 
 	{
-		if (saldoConta < s && statusConta == false) {
+		if (this.saldoConta < s && this.statusConta == false) {
 			System.out.println("Verifique o saldo ou o status da conta antes de sacar um valor.");
 		}	
-		System.out.println("Saque realizado com sucesso!");
-		saldoConta -= s;
+		this.setSaldo(this.getSaldo() - s);
 		return s;			
 	}
 	
-	public void info() 
+	public float pagarMensal() 
 	{		
-		System.out.println("Tipo da conta: " + tipoConta);
-		System.out.println("Saldo: " + saldoConta);				
-	}	
-			
+		float m = 0;		
+		if (this.tipoConta == "cc") {
+			m = 12;
+			this.setSaldo(this.getSaldo() + m);			
+		}
+		else if (this.tipoConta == "cp") {
+			m = 20;
+			this.setSaldo(this.getSaldo() - m);
+		}
+		return m;		
+	}
+	
 }
 	
 	
